@@ -1,1 +1,1 @@
-{ "verCode":"3","verName":"3.0.1","apkPath":"http://www.luancheng.us/apps/zybx.apk" }
+﻿{ "verCode":"1205","verName":"1.2.5","apkPath":"http://10.0.0.100:8080/Test/AIO7.apk", 'releaseNote': '1. 新增功能: 滚动字幕, 图片新闻, 提醒;\n2. 改进: 日历有时候不能滑动, 单据明细列表有时候显示不出来' }

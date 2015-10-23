@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
  
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-           id="com.zybx.xiaofu"
-      version="0.1.0">
+           id="com.plugin.update"
+      version="1.0.0">
     <name>apkUpdate</name>
-    <description>Sample PhoneGap Apk Update Plugin</description>
+    <description>PhoneGap/Cordova Apk Update Plugin</description>
     <license>MIT</license>
-    <keywords>phonegap,android,autoupdate</keywords>
- 
- 
-    <js-module src="www/updateAppPlugin.js" name="UpdateApp">
-        <clobbers target="window.update" />
-    </js-module>
- 
+    <keywords>phonegap,cordova,android,autoupdate</keywords>
+  
     <!-- android -->
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="UpdateApp">
-				<param name="android-package" value="com.zybx.xiaofu.UpdateApp" />
-	    </feature>
-        </config-file> 
-        <source-file src="src/UpdateApp.java" target-dir="src/com/zybx/xiaofu" />      
-     </platform>          
+      <js-module src="www/updateAppPlugin.js" name="UpdateApp">
+        <clobbers target="plugins.update" />
+      </js-module>
+      
+      <config-file target="res/xml/config.xml" parent="/*">
+        <feature name="UpdateApp">
+			    <param name="android-package" value="com.plugin.update.UpdateApp" />
+	      </feature>
+      </config-file>
+      
+      <config-file target="AndroidManifest.xml" parent="/*">
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+      </config-file>
+
+      <config-file target="res/values/strings.xml" parent="/*">
+        <string name="soft_update_title">新版本</string>
+        <string name="soft_update_updatebtn">现在更新</string>
+        <string name="soft_update_later">以后再说</string>
+        <string name="soft_updating">更新中...</string>
+        <string name="soft_update_cancel">取消</string>
+      </config-file>
+      
+      <source-file src="src/UpdateApp.java" target-dir="src/com/plugin/update" />
+
+      <source-file src="res/layout/softupdate_progress.xml" target-dir="res/layout"/>
+  </platform>          
 </plugin>
 
